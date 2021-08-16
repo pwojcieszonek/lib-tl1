@@ -1,8 +1,9 @@
-#Author: Piotr Wojcieszonek
-#e-mail: piotr@wojcieszonek.pl
+# Author: Piotr Wojcieszonek
+# e-mail: piotr@wojcieszonek.pl
 # Copyright 03.08.2021 Piotr Wojcieszonek
+# frozen_string_literal: true
 
-require_relative 'base'
+require_relative "base"
 
 module Lib
   module TL1
@@ -12,6 +13,7 @@ module Lib
 
           def initialize(field)
             raise ArgumentError, "Command can't be nil" if field.nil?
+
             super field.to_s.upcase
           end
 

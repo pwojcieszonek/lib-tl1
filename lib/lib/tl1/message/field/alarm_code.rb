@@ -1,8 +1,9 @@
-#Author: Piotr Wojcieszonek
-#e-mail: piotr@wojcieszonek.pl
+# Author: Piotr Wojcieszonek
+# e-mail: piotr@wojcieszonek.pl
 # Copyright 03.08.2021 Piotr Wojcieszonek
+# frozen_string_literal: true
 
-require_relative 'base'
+require_relative "base"
 
 module Lib
   module TL1
@@ -10,14 +11,15 @@ module Lib
       module Field
         class AlarmCode < Base
           ALARM_CODE = {
-            :'*C' => 'Critical Alarm',
-            :'**' => 'Major Alarm',
-            :'*^' => 'Minor Alarm',
-            :'A^' => 'Non-Alarm Message'
-          }
+            '*C': "Critical Alarm",
+            '**': "Major Alarm",
+            '*^': "Minor Alarm",
+            'A^': "Non-Alarm Message"
+          }.freeze
 
           def initialize(field)
             raise ArgumentError, "Unknown Alarm Code - #{field}" unless ALARM_CODE.key? field.to_s.upcase.to_sym
+
             super field.to_s.upcase.to_sym
           end
 

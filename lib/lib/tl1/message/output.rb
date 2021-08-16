@@ -1,9 +1,10 @@
-#Author: Piotr Wojcieszonek
-#e-mail: piotr@wojcieszonek.pl
+# Author: Piotr Wojcieszonek
+# e-mail: piotr@wojcieszonek.pl
 # Copyright 03.08.2021 Piotr Wojcieszonek
+# frozen_string_literal: true
 
-require_relative 'field'
-require 'comparable'
+require_relative "field"
+require "comparable"
 
 module Lib
   module TL1
@@ -26,20 +27,21 @@ module Lib
         end
 
         def <=>(other)
-          return nil unless self.class == other.class
-          self.to_s <=> other.to_s
+          return nil unless instance_of? other.class
+
+          to_s <=> other.to_s
         end
 
         def to_s
           "\r\n\n   #{sid} #{date} #{time}\r\nM  #{ctag} #{cc}\r\n   #{text_block}\r\n;"
         end
-        alias_method :to_str, :to_s
+        alias to_str to_s
 
         def sid=(sid)
           @sid = sid.is_a?(Field::SystemIdentifier) ? sid : Field::SystemIdentifier.new(sid)
         end
-        alias_method :system_identifier, :sid
-        alias_method :system_identifier=, :sid=
+        alias system_identifier sid
+        alias system_identifier= sid=
 
         def date=(date)
           @date = date.is_a?(Field::Date) ? date : Field::Date.new(date)
@@ -52,8 +54,8 @@ module Lib
         def cc=(cc)
           @cc = cc.is_a?(Field::CompletionCode) ? cc : Field::CompletionCode.new(cc)
         end
-        alias_method :completion_code, :cc
-        alias_method :completion_code=, :cc=
+        alias completion_code cc
+        alias completion_code= cc=
 
         def text_block=(text_block)
           @text_block = text_block.is_a?(Field::TextBlock) ? text_block : Field::TextBlock.new(text_block)
@@ -62,8 +64,8 @@ module Lib
         def ctag=(ctag)
           @ctag = ctag.is_a?(Field::CorrelationTag) ? ctag : Field::CorrelationTag.new(ctag)
         end
-        alias_method :correlation_tag, :ctag
-        alias_method :correlation_tag=, :ctag=
+        alias correlation_tag ctag
+        alias correlation_tag= ctag=
 
       end
     end

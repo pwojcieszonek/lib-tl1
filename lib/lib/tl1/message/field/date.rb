@@ -1,9 +1,10 @@
-#Author: Piotr Wojcieszonek
-#e-mail: piotr@wojcieszonek.pl
+# Author: Piotr Wojcieszonek
+# e-mail: piotr@wojcieszonek.pl
 # Copyright 03.08.2021 Piotr Wojcieszonek
+# frozen_string_literal: true
 
-require_relative 'base'
-require 'date'
+require_relative "base"
+require "date"
 
 module Lib
   module TL1

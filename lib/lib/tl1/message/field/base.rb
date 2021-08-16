@@ -1,8 +1,9 @@
-#Author: Piotr Wojcieszonek
-#e-mail: piotr@wojcieszonek.pl
+# Author: Piotr Wojcieszonek
+# e-mail: piotr@wojcieszonek.pl
 # Copyright 03.08.2021 Piotr Wojcieszonek
+# frozen_string_literal: true
 
-require 'forwardable'
+require "forwardable"
 
 module Lib
   module TL1
@@ -21,11 +22,12 @@ module Lib
           end
 
           def <=>(other)
-            return nil if self.class != other.class
-            self.field <=> other.field
+            return nil unless instance_of? other.class
+
+            field <=> other.field
           end
 
-          alias_method :to_str, :to_s
+          alias to_str to_s
         end
       end
     end

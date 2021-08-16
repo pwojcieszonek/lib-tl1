@@ -1,9 +1,10 @@
-#Author: Piotr Wojcieszonek
-#e-mail: piotr@wojcieszonek.pl
+# Author: Piotr Wojcieszonek
+# e-mail: piotr@wojcieszonek.pl
 # Copyright 03.08.2021 Piotr Wojcieszonek
+# frozen_string_literal: true
 
-require_relative 'field'
-require 'comparable'
+require_relative "field"
+require "comparable"
 
 module Lib
   module TL1
@@ -27,20 +28,21 @@ module Lib
         end
 
         def <=>(other)
-          return nil unless self.class == other.class
-          self.to_s <=> other.to_s
+          return nil unless instance_of? other.class
+
+          to_s <=> other.to_s
         end
 
         def to_s
           "\r\n\n   #{sid} #{date} #{time}\r\n  #{alarm_code} #{ctag}\r\n   #{text_block}\r\n;"
         end
-        alias_method :to_str, :to_s
+        alias to_str to_s
 
         def sid=(sid)
           @sid = sid.is_a?(Field::SystemIdentifier) ? sid : Field::SystemIdentifier.new(sid)
         end
-        alias_method :system_identifier, :sid
-        alias_method :system_identifier=, :sid=
+        alias system_identifier sid
+        alias system_identifier= sid=
 
         def date=(date)
           @date = date.is_a?(Field::Date) ? date : Field::Date.new(date)
@@ -57,10 +59,10 @@ module Lib
         def ctag=(ctag)
           @atag = ctag.is_a?(Field::CorrelationTag) ? ctag : Field::CorrelationTag.new(ctag)
         end
-        alias_method :correlation_tag, :ctag
-        alias_method :correlation_tag=, :ctag=
-        alias_method :atag, :ctag
-        alias_method :atag=, :ctag=
+        alias correlation_tag ctag
+        alias correlation_tag= ctag=
+        alias atag ctag
+        alias atag= ctag=
 
         def command=(command)
           @verb = command.is_a?(Field::CommandVerb) ? command : Field::CommandVerb.new(command)

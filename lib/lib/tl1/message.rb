@@ -1,11 +1,12 @@
-#Author: Piotr Wojcieszonek
-#e-mail: piotr@wojcieszonek.pl
+# Author: Piotr Wojcieszonek
+# e-mail: piotr@wojcieszonek.pl
 # Copyright 03.08.2021 Piotr Wojcieszonek
+# frozen_string_literal: true
 
-require_relative 'message/acknowledgment'
-require_relative 'message/autonomous'
-require_relative 'message/input'
-require_relative 'message/output'
+require_relative "message/acknowledgment"
+require_relative "message/autonomous"
+require_relative "message/input"
+require_relative "message/output"
 
 module Lib
   module TL1
@@ -32,6 +33,7 @@ module Lib
           raise ArgumentError, "Can't parse Message. Unknown TL1 message type"
         end
       end
+      alias new parse
     end
   end
 end
