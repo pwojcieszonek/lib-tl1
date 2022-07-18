@@ -4,7 +4,7 @@
 # frozen_string_literal: true
 
 require_relative "field"
-require "comparable"
+
 module Lib
   module TL1
     module Message

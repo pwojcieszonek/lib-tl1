@@ -4,7 +4,7 @@
 # frozen_string_literal: true
 
 module Lib
-  module Tl1
-    VERSION = "0.1.0"
+  module TL1
+    VERSION = "0.1.2"
   end
 end

@@ -4,7 +4,7 @@ require_relative "lib/lib/tl1/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "lib-tl1"
-  spec.version       = Lib::Tl1::VERSION
+  spec.version       = Lib::TL1::VERSION
   spec.authors       = ["Piotr Wojcieszonek"]
   spec.email         = ["piotr@wojcieszonek.pl"]
 
