@@ -11,9 +11,9 @@ require_relative "message/output"
 module Lib
   module TL1
     module Message
-      def parse(message)
+      def self.parse(message)
         case message
-        when /\r\n\n   (.{0,20}) (\d{2,4}-\d{1,2}-\d{1,2}) (\d{1,2}:\d{1,2}:\d{1,2})\r\nM  (\d{1,6}) (\w{4,6})(.*)\r\n;/mi #Output message
+        when /\r\n\n   (.{0,20}) (\d{2,4}-\d{1,2}-\d{1,2}) (\d{1,2}:\d{1,2}:\d{1,2})\r\nM  (\d{1,6}) (\w{4,6})(.*)\r\n(;|\r\n)/mi #Output message
           # $1 - SID, $2 - DATE, $3 - TIME, $4 - CTAG, $5 - COMPLETION CODE, $6 - MESSAGE TEXT BLOCK
           Lib::TL1::Message::Output.new(sid: $1, date: $2, time: $3, ctag: $4, cc: $5, text_block: $6)
 
@@ -33,7 +33,6 @@ module Lib
           raise ArgumentError, "Can't parse Message. Unknown TL1 message type"
         end
       end
-      alias new parse
     end
   end
 end

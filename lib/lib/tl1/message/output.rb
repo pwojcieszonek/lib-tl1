@@ -4,7 +4,7 @@
 # frozen_string_literal: true
 
 require_relative "field"
-require "comparable"
+
 
 module Lib
   module TL1
@@ -36,6 +36,17 @@ module Lib
           "\r\n\n   #{sid} #{date} #{time}\r\nM  #{ctag} #{cc}\r\n   #{text_block}\r\n;"
         end
         alias to_str to_s
+
+        def to_h
+          {
+            sid: self.sid,
+            date: self.date,
+            time: self.time,
+            ctag: self.ctag,
+            cc: self.cc,
+            text_block: self.text_block
+          }
+        end
 
         def sid=(sid)
           @sid = sid.is_a?(Field::SystemIdentifier) ? sid : Field::SystemIdentifier.new(sid)
